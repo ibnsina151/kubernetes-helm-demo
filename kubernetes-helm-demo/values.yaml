@@ -1,0 +1,23 @@
+replicas:
+  server: 2
+  client: 1
+images:
+  server: gcr.io/analytics-team-253708/kubernetes-helm/server
+  client: gcr.io/analytics-team-253708/kubernetes-helm/client
+domain:
+  server: server
+  client: client
+secrets:
+  keys:
+    domain_key: domain
+labels:
+  server:
+    workgroup: server
+  client:
+    workgroup: client
+deployments:
+  server: server
+  client: client
+ports:
+  server: 5000
+  client: 5000

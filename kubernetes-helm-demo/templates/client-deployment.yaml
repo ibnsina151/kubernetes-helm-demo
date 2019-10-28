@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-{{.Values.deployments.client}}-deployment
+spec:
+  selector:
+    matchLabels:
+      {{toYaml .Values.labels.client}}
+  template:
+    metadata:
+      labels:
+        {{toYaml .Values.labels.client}}
+    spec:
+      containers:
+        - name: {{.Release.Name}}-{{.Values.deployments.client}}-container
+          image: {{.Values.images.client}}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{.Values.ports.client}}
+          env:
+            - name: {{.Values.secrets.keys.domain_key}}
+              value: {{.Values.domain.client}}
+

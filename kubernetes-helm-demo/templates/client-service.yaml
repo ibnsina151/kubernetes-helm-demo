@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Release.Name}}-{{.Values.deployments.client}}-service
+spec:
+  selector:
+    {{toYaml .Values.labels.client}}
+  ports:
+    - port: 80
+      targetPort: {{.Values.ports.client}}
+  type: NodePort

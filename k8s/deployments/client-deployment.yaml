@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analytics-team
+  labels:
+    workgroup: analytics-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      team: analytics
+  template:
+    metadata:
+      name: shetu-pod
+      labels:
+        team: analytics
+        position: sse
+        location: mirpur
+    spec:
+      containers:
+        - name: server-deployment-container
+          image: gcr.io/analytics-team-253708/kubernetes-helm/client
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          env:
+            - name: domain
+              value: client
+

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-{{.Values.deployments.server}}-deployment
+spec:
+  selector:
+    matchLabels:
+      {{toYaml .Values.labels.server}}
+  template:
+    metadata:
+      labels:
+        {{toYaml .Values.labels.server}}
+    spec:
+      containers:
+        - name: {{.Release.Name}}-{{.Values.deployments.server}}-container
+          image: {{.Values.images.server}}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{.Values.ports.server}}
+          env:
+            - name: {{.Values.secrets.keys.domain_key}}
+              value: {{.Values.domain.server}}
