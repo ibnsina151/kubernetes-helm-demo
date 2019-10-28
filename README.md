@@ -23,7 +23,7 @@ helm init
 7. Apply all the services using `kubectl apply -f k8s/services`
 
 ### If you want to use only kubernetes cluster with helm
-4. go to the charts folder using `cd kubernetes-helm-demo/`
+4. go to the charts folder using `cd kubernetes-helm-demo/` and run `helm dep up` to updated all the charts mentioned in `requirements.yaml`
 5. Replace all the `image.server` and `images.client` values in `values.yaml`
 6. Check the syntax using `helm template -f Chart.yaml .`
 7. Install the chart file using `helm install -f Chart.yaml .`
