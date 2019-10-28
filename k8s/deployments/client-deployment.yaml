@@ -1,21 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: analytics-team
+  name: client-deployment
   labels:
-    workgroup: analytics-deployment
+    workgroup: client
 spec:
   replicas: 2
   selector:
     matchLabels:
-      team: analytics
+      workgroup: client
   template:
     metadata:
-      name: shetu-pod
+      name: client-deployment
       labels:
-        team: analytics
-        position: sse
-        location: mirpur
+        workgroup: client
     spec:
       containers:
         - name: server-deployment-container

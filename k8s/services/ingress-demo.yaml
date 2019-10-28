@@ -6,17 +6,14 @@ metadata:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
-  backend:
-    serviceName: charles-service
-    servicePort: 80
   rules:
     - http:
         paths:
-          - path: /charles(/|$)(.*)
+          - path: /server(/|$)(.*)
             backend:
-              serviceName: charles-service
+              serviceName: server-service
               servicePort: 80
-          - path: /rafi(/|$)(.*)
+          - path: /client(/|$)(.*)
             backend:
-              serviceName: rafi-service
+              serviceName: client-service
               servicePort: 80
