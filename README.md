@@ -18,7 +18,7 @@ helm init
 
 ### If you want to use only kubernetes cluster without helm
 4. Change the image location in `k8s/deployments/server-deployment.yaml` under `spec.template.spec.containers[0].image`
-5. Do the same for `k8s/deployments/client-deployment.yaml`
+5. Do the same for `k8s/deployments/client-deployment.yaml` and run `helm install stable/nginx-ingress`
 6. Now apply all the deployments using `kubectl apply -f k8s/deployments`
 7. Apply all the services using `kubectl apply -f k8s/services`
 
