@@ -1,7 +1,7 @@
 # kubernetes-helm-demo
 
 ## Prerequisites
-It's assumed that you have already booted a cluster in GKE and you are connected with it using gcloud connect command.
+It's assumed that you have already booted a cluster in GKE and you are connected with it using gcloud connect command and helm is installed on your local machine.
 
 
 1. First build two docker container with different tags using the following command `docker build . -t tag_of_the_container`
